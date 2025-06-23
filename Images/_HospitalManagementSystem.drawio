@@ -792,7 +792,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ChpaO3lGEaWE4Zlcx9jq" name="Page-2">
-    <mxGraphModel dx="3417" dy="1503" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="2278" dy="1002" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1002,10 +1002,10 @@
         <mxCell id="31139JaMU6oThb-CuEBK-1" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Diagnosis&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="1860" y="1000" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="6avp38Hpeqs636xFPtOK-1" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Diagnosis&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+        <mxCell id="6avp38Hpeqs636xFPtOK-1" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Date&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="2240" y="1000" width="120" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="6avp38Hpeqs636xFPtOK-2" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Diagnosis&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+        <mxCell id="6avp38Hpeqs636xFPtOK-2" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Notes&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
           <mxGeometry x="2120" y="1000" width="120" height="40" as="geometry" />
         </mxCell>
         <mxCell id="6avp38Hpeqs636xFPtOK-3" value="&lt;b style=&quot;font-family: &amp;quot;Times New Roman&amp;quot;;&quot;&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;TreatmentPlans&lt;/font&gt;&lt;/b&gt;" style="whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
