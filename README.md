@@ -18,3 +18,8 @@
 
 ## 2. Mapping
 ![Mapping](./Images/_HospitalManagementSystemMapping.png)
+
+## 3. Normalization
+![Normalization](./Images/_HospitalManagementSystemNormalization.png)
+
+
