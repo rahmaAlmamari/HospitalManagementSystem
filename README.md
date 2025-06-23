@@ -1,1 +1,1 @@
-# HospitalManagementSystem
+# Required Database Objects - Tables (DDL)
