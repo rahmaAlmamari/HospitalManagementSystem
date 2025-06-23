@@ -15,3 +15,5 @@
 
 ## 1. ERD 
 ![ERD](./Images/_HospitalManagementSystemERD.png)
+
+## 2. Mapping
