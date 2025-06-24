@@ -1,4 +1,3 @@
-
 -- Create Hospital Management System database
 CREATE DATABASE HospitalManagementSystem;
 
@@ -9,37 +8,59 @@ USE HospitalManagementSystem;
 -- Create Staffs table
 CREATE TABLE Staffs (
     StaffID INT PRIMARY KEY IDENTITY(1,1),
-    StaffRole VARCHAR(100) NOT NULL
+    StaffRole VARCHAR(100) NOT NULL CHECK (StaffRole IN 
+    ('Doctor', 'Receptionist', 'Nurse', 'Pharmacist', 'Technician', 'Surgeon', 'Admin'))
 );
+
+--Adding constraint for StaffRole to check if the value entered is vailde or not
 
 -- Create Users table
 CREATE TABLE Users (
-    UserID INT PRIMARY KEY IDENTITY(1,1),
+    --UserID INT PRIMARY KEY IDENTITY(1,1),
+	UserID INT IDENTITY(1,1),
     StaffID INT FOREIGN KEY REFERENCES Staffs(StaffID) ON DELETE CASCADE ON UPDATE CASCADE,
     UserName VARCHAR(50) NOT NULL,
-    Password VARCHAR(50) NOT NULL
+    Password VARCHAR(50) NOT NULL,
+	PRIMARY KEY(UserID, StaffID)
 );
+
+--PRIMARY KEY is a Composite kay 
 
 -- Create Departments table
 CREATE TABLE Departments (
     DepartmentID INT PRIMARY KEY IDENTITY(1,1),
-    DepartmentName VARCHAR(100) NOT NULL
+    DepartmentName VARCHAR(100) NOT NULL CHECK (DepartmentName IN 
+    ('Cardiology', 'Neurology', 'Pediatrics', 'Orthopedics', 'General Surgery', 'Radiology', 'Dermatology'))
 );
+
+--Adding constraint for DepartmentName to check if the value entered is vailde or not
 
 -- Create Doctors table
 CREATE TABLE Doctors (
     DoctorID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID) ON DELETE CASCADE ON UPDATE CASCADE,
-    StaffID INT FOREIGN KEY REFERENCES Staffs(StaffID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    UserID INT NOT NULL,
+    StaffID INT NOT NULL,
     DepartmentID INT FOREIGN KEY REFERENCES Departments(DepartmentID) ON DELETE SET NULL ON UPDATE NO ACTION,
     DoctorName VARCHAR(50) NOT NULL,
     DOB DATE NOT NULL,
-    Gender VARCHAR(20) NOT NULL,
+    Gender VARCHAR(10) NOT NULL CHECK (Gender IN ('Male', 'Female')),
     Specialization VARCHAR(255) NOT NULL DEFAULT 'General Practitioner',
     PhoneNo VARCHAR(8) NOT NULL CHECK(LEN(RTRIM(PhoneNo)) = 8),
     Address VARCHAR(255),
-    Email VARCHAR(255),   
+    Email VARCHAR(255),
+
+    -- Composite Foreign Key
+    CONSTRAINT FK_Doctors_Users FOREIGN KEY (UserID, StaffID)
+        REFERENCES Users(UserID, StaffID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
+
+--becosue the FK is a Composite PK first I prepare a column to take their value (UserID, StaffID) sparet and then 
+-- I add a constraint FK (FK_Doctors_Users) which will brainge the Composite PK together and divided the into 
+--(UserID, StaffID) columns
+
+--Adding constraint for Gender, Specialization and PhoneNo to check if the value entered is vailde or not
 
 -- Create Patients table
 CREATE TABLE Patients (
@@ -51,6 +72,8 @@ CREATE TABLE Patients (
     Address VARCHAR(255),
     Email VARCHAR(255)
 );
+
+--Adding constraint for PhoneNo to check if the value entered is vailde or not
 
 -- Create Appointments table
 CREATE TABLE Appointments (
@@ -68,12 +91,20 @@ CREATE TABLE Rooms (
     Availability VARCHAR(10) DEFAULT 'TRUE'
 );
 
+--Adding constraint for Availability to check if the value entered is vailde or not
+
 -- Create Receptionist table
 CREATE TABLE Receptionist (
     ReceptionistID INT PRIMARY KEY IDENTITY(1,1),
-    UserID INT FOREIGN KEY REFERENCES Users(UserID) ON DELETE CASCADE ON UPDATE CASCADE,
-    StaffID INT FOREIGN KEY REFERENCES Staffs(StaffID) ON DELETE NO ACTION ON UPDATE NO ACTION,
+    UserID INT NOT NULL,
+    StaffID INT NOT NULL,
     ReceptionistName VARCHAR(50), 
+
+	-- Composite Foreign Key
+    CONSTRAINT FK_Receptionist_Users FOREIGN KEY (UserID, StaffID)
+        REFERENCES Users(UserID, StaffID)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
 );
 
 -- Create Admissions table
@@ -95,6 +126,8 @@ CREATE TABLE MedicalRecords (
     Date DATE NOT NULL
 );
 
+--Adding constraint for Notes to check if the value entered is vailde or not
+
 -- Create MedicalDiagnoses table
 CREATE TABLE MedicalDiagnoses (
     DiagnosisID INT PRIMARY KEY IDENTITY(1,1),
@@ -102,12 +135,16 @@ CREATE TABLE MedicalDiagnoses (
     Diagnosis VARCHAR(255) DEFAULT 'No diagnosis add'
 );
 
+--Adding constraint for Diagnosis to check if the value entered is vailde or not
+
 -- Create MedicalTreatments table
 CREATE TABLE MedicalTreatments (
     TreatmentID INT PRIMARY KEY IDENTITY(1,1),
     MedicalRecordsID INT FOREIGN KEY REFERENCES MedicalRecords(MedicalRecordsID) ON DELETE CASCADE ON UPDATE CASCADE,
     TreatmentPlans VARCHAR(255) DEFAULT 'No treatment plans add'
 );
+
+--Adding constraint for TreatmentPlans to check if the value entered is vailde or not
 
 -- Create Billing table
 CREATE TABLE Billing (
@@ -122,8 +159,10 @@ CREATE TABLE BillingServices (
     ServicesID INT PRIMARY KEY IDENTITY(1,1),
     BillingID INT FOREIGN KEY REFERENCES Billing(BillingID) ON DELETE CASCADE ON UPDATE CASCADE,
     ServicesName VARCHAR(255) NOT NULL,
-    ServicesCost INT NOT NULL CHECK (ServicesCost > 0)
+    ServicesCost decimal NOT NULL CHECK (ServicesCost > 0)
 );
+
+--Adding constraint for ServicesCost to check if the value entered is vailde or not
 
 -------------------------------------------------------------DML (INSERATION DATA TO THE TABLES)---------------------------------
 
@@ -131,6 +170,8 @@ CREATE TABLE BillingServices (
 -- Insert into Staffs
 INSERT INTO Staffs (StaffRole) VALUES 
 ('Doctor'), ('Receptionist'), ('Nurse'), ('Pharmacist'), ('Technician'), ('Surgeon'), ('Admin');
+
+SELECT * FROM Staffs;
 
 -- Insert into Users
 INSERT INTO Users (StaffID, UserName, Password) VALUES 
@@ -142,9 +183,13 @@ INSERT INTO Users (StaffID, UserName, Password) VALUES
 (6, 'surge_linda', 'pass678'),
 (7, 'admin_kate', 'pass789');
 
+SELECT * FROM Users;
+
 -- Insert into Departments
 INSERT INTO Departments (DepartmentName) VALUES 
 ('Cardiology'), ('Neurology'), ('Pediatrics'), ('Orthopedics'), ('General Surgery'), ('Radiology'), ('Dermatology');
+
+SELECT * FROM Departments;
 
 -- Insert into Doctors
 INSERT INTO Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Specialization, PhoneNo, Address, Email) VALUES 
@@ -156,6 +201,8 @@ INSERT INTO Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Spe
 (1, 1, 6, 'Dr. Olivia Grey', '1983-06-25', 'Female', 'Radiologist', '99887765', '987 Scan Ave.', 'olivia@hospital.com'),
 (1, 1, 7, 'Dr. Mason Blue', '1990-02-28', 'Male', 'Dermatologist', '99887760', '123 Skin Rd.', 'mason@hospital.com');
 
+SELECT * FROM Doctors;
+
 -- Insert into Patients
 INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES 
 ('James Taylor', '1992-08-15', 'Male', '90909090', '12 Street A', 'james@mail.com'),
@@ -165,6 +212,8 @@ INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES
 ('Michael Lee', '1982-01-30', 'Male', '50505050', '90 Street E', 'michael@mail.com'),
 ('Grace Hill', '1995-09-17', 'Female', '40404040', '21 Street F', 'grace@mail.com'),
 ('Daniel Young', '2000-12-20', 'Male', '30303030', '43 Street G', 'daniel@mail.com');
+
+SELECT * FROM Patients;
 
 -- Insert into Appointments
 INSERT INTO Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate) VALUES 
@@ -176,6 +225,8 @@ INSERT INTO Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate)
 (6, 6, '14:00', '2025-07-06'),
 (7, 7, '15:00', '2025-07-07');
 
+SELECT * FROM Appointments;
+
 -- Insert into Rooms
 INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES 
 (101, 'ICU', 'TRUE'),
@@ -185,6 +236,8 @@ INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES
 (105, 'Surgery', 'FALSE'),
 (106, 'Radiology', 'TRUE'),
 (107, 'Dermatology', 'TRUE');
+
+SELECT * FROM Rooms;
 
 -- Insert into Receptionist
 INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES 
@@ -196,6 +249,8 @@ INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES
 (2, 2, 'Lana'),
 (2, 2, 'Rina');
 
+SELECT * FROM Receptionist;
+
 -- Insert into Admissions
 INSERT INTO Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) VALUES 
 (1, 101, 1, '2025-06-01', '2025-06-05'),
@@ -205,6 +260,8 @@ INSERT INTO Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) 
 (5, 105, 5, '2025-06-05', '2025-06-09'),
 (6, 106, 6, '2025-06-06', '2025-06-10'),
 (7, 107, 7, '2025-06-07', '2025-06-11');
+
+SELECT * FROM Admissions;
 
 -- Insert into MedicalRecords
 INSERT INTO MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES 
@@ -216,6 +273,8 @@ INSERT INTO MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES
 (6, 6, 'Scan done', '2025-06-06'),
 (7, 7, 'Skin rash treated', '2025-06-07');
 
+SELECT * FROM MedicalRecords;
+
 -- Insert into MedicalDiagnoses
 INSERT INTO MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES 
 (1, 'Hypertension'),
@@ -225,6 +284,8 @@ INSERT INTO MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES
 (5, 'Appendicitis'),
 (6, 'Lung infection'),
 (7, 'Eczema');
+
+SELECT * FROM MedicalDiagnoses;
 
 -- Insert into MedicalTreatments
 INSERT INTO MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES 
@@ -236,6 +297,8 @@ INSERT INTO MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES
 (6, 'Antibiotics'),
 (7, 'Ointments');
 
+SELECT * FROM MedicalTreatments;
+
 -- Insert into Billing
 INSERT INTO Billing (PatientID, MedicalRecordsID, Date) VALUES 
 (1, 1, '2025-06-01'),
@@ -246,12 +309,16 @@ INSERT INTO Billing (PatientID, MedicalRecordsID, Date) VALUES
 (6, 6, '2025-06-06'),
 (7, 7, '2025-06-07');
 
+SELECT * FROM Billing;
+
 -- Insert into BillingServices
 INSERT INTO BillingServices (BillingID, ServicesName, ServicesCost) VALUES 
-(1, 'Checkup', 20),
+(1, 'Checkup', 20.44),
 (2, 'MRI', 120),
 (3, 'Consultation', 50),
 (4, 'X-Ray', 70),
-(5, 'Surgery', 500),
+(5, 'Surgery', 500.04),
 (6, 'CT Scan', 150),
-(7, 'Skin Treatment', 80);
+(7, 'Skin Treatment', 80.489);
+
+SELECT * FROM BillingServices;
