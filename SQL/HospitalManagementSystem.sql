@@ -192,7 +192,7 @@ INSERT INTO Departments (DepartmentName) VALUES
 SELECT * FROM Departments;
 
 -- Insert into Doctors
-INSERT INTO Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Specialization, PhoneNo, Address, Email) VALUES 
+INSERT INTO DoctorsSchema.Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Specialization, PhoneNo, Address, Email) VALUES 
 (1, 1, 1, 'Dr. John Smith', '1980-04-12', 'Male', 'Cardiologist', '99887766', '123 Heart St.', 'john@hospital.com'),
 (1, 1, 2, 'Dr. Alice Brown', '1975-07-19', 'Female', 'Neurologist', '99887761', '456 Brain Ave.', 'alice@hospital.com'),
 (1, 1, 3, 'Dr. Emma White', '1988-09-21', 'Female', 'Pediatrician', '99887762', '789 Kid Ln.', 'emma@hospital.com'),
@@ -200,8 +200,31 @@ INSERT INTO Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Spe
 (1, 1, 5, 'Dr. Liam Green', '1979-11-17', 'Male', 'Surgeon', '99887764', '654 Cut St.', 'liam@hospital.com'),
 (1, 1, 6, 'Dr. Olivia Grey', '1983-06-25', 'Female', 'Radiologist', '99887765', '987 Scan Ave.', 'olivia@hospital.com'),
 (1, 1, 7, 'Dr. Mason Blue', '1990-02-28', 'Male', 'Dermatologist', '99887760', '123 Skin Rd.', 'mason@hospital.com');
+-- Insert additional Doctors
+INSERT INTO DoctorsSchema.Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Specialization, PhoneNo, Address, Email) VALUES
+(1, 1, 1, 'Dr. Ethan Reed', '1981-05-20', 'Male', 'Cardiologist', '99887701', '12 Heartway St.', 'ethan.reed@hospital.com'),
+(1, 1, 2, 'Dr. Sophia Clark', '1979-08-15', 'Female', 'Neurologist', '99887702', '34 Brainy Rd.', 'sophia.clark@hospital.com'),
+(1, 1, 3, 'Dr. Benjamin Hall', '1987-03-10', 'Male', 'Pediatrician', '99887703', '56 Childcare Blvd.', 'ben.hall@hospital.com'),
+(1, 1, 4, 'Dr. Mia Lewis', '1985-11-05', 'Female', 'Orthopedic Surgeon', '99887704', '78 Bone St.', 'mia.lewis@hospital.com'),
+(1, 1, 5, 'Dr. Lucas Walker', '1983-07-12', 'Male', 'Surgeon', '99887705', '90 Surgery Rd.', 'lucas.walker@hospital.com'),
+(1, 1, 6, 'Dr. Ella Harris', '1990-02-28', 'Female', 'Radiologist', '99887706', '21 Imaging Ln.', 'ella.harris@hospital.com'),
+(1, 1, 7, 'Dr. Henry Young', '1984-06-18', 'Male', 'Dermatologist', '99887707', '43 Skin St.', 'henry.young@hospital.com'),
+(1, 1, 1, 'Dr. Grace King', '1986-09-25', 'Female', 'Cardiologist', '99887708', '65 Heart Blvd.', 'grace.king@hospital.com'),
+(1, 1, 2, 'Dr. Daniel Scott', '1982-12-14', 'Male', 'Neurologist', '99887709', '87 Brainy Ave.', 'daniel.scott@hospital.com'),
+(1, 1, 3, 'Dr. Lily Adams', '1991-01-22', 'Female', 'Pediatrician', '99887710', '109 Kids St.', 'lily.adams@hospital.com'),
+(1, 1, 4, 'Dr. Samuel Baker', '1980-04-05', 'Male', 'Orthopedic Surgeon', '99887711', '131 Bones Blvd.', 'samuel.baker@hospital.com'),
+(1, 1, 5, 'Dr. Chloe Carter', '1988-07-16', 'Female', 'Surgeon', '99887712', '153 Surgery Way', 'chloe.carter@hospital.com'),
+(1, 1, 6, 'Dr. Jack Morris', '1977-11-29', 'Male', 'Radiologist', '99887713', '175 Scan Rd.', 'jack.morris@hospital.com'),
+(1, 1, 7, 'Dr. Emily Perez', '1989-03-03', 'Female', 'Dermatologist', '99887714', '197 Skin Blvd.', 'emily.perez@hospital.com'),
+(1, 1, 1, 'Dr. Oliver Ward', '1992-05-25', 'Male', 'Cardiologist', '99887715', '219 Heart St.', 'oliver.ward@hospital.com'),
+(1, 1, 2, 'Dr. Ava Bennett', '1990-09-09', 'Female', 'Neurologist', '99887716', '241 Brainy Ave.', 'ava.bennett@hospital.com'),
+(1, 1, 3, 'Dr. William Cooper', '1981-08-01', 'Male', 'Pediatrician', '99887717', '263 Kids Rd.', 'william.cooper@hospital.com'),
+(1, 1, 4, 'Dr. Harper Rivera', '1984-10-30', 'Female', 'Orthopedic Surgeon', '99887718', '285 Bones St.', 'harper.rivera@hospital.com'),
+(1, 1, 5, 'Dr. James Bailey', '1979-02-14', 'Male', 'Surgeon', '99887719', '307 Surgery Ln.', 'james.bailey@hospital.com'),
+(1, 1, 6, 'Dr. Isabella Brooks', '1987-06-20', 'Female', 'Radiologist', '99887720', '329 Imaging Blvd.', 'isabella.brooks@hospital.com');
 
-SELECT * FROM Doctors;
+
+SELECT * FROM DoctorsSchema.Doctors;
 
 -- Insert into Patients
 INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES 
@@ -216,7 +239,7 @@ INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES
 SELECT * FROM Patients;
 
 -- Insert into Appointments
-INSERT INTO Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate) VALUES 
+INSERT INTO DoctorsSchema.Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate) VALUES 
 (1, 1, '09:00', '2025-07-01'),
 (2, 2, '10:00', '2025-07-02'),
 (3, 3, '11:00', '2025-07-03'),
@@ -225,7 +248,31 @@ INSERT INTO Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate)
 (6, 6, '14:00', '2025-07-06'),
 (7, 7, '15:00', '2025-07-07');
 
-SELECT * FROM Appointments;
+-- Insert additional Appointments (DoctorID = 1 has 5 records)
+INSERT INTO DoctorsSchema.Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate) VALUES
+(1, 1, '09:30', '2025-07-08'),  -- Doctor 1
+(2, 1, '10:15', '2025-07-09'),  -- Doctor 1
+(3, 1, '11:45', '2025-07-10'),  -- Doctor 1
+(4, 1, '12:30', '2025-07-11'),  -- Doctor 1
+(5, 1, '13:15', '2025-07-12'),  -- Doctor 1
+(6, 2, '14:00', '2025-07-13'),
+(7, 3, '15:30', '2025-07-14'),
+(1, 3, '09:00', '2025-08-01'),
+(2, 4, '10:30', '2025-08-02'),
+(3, 5, '11:00', '2025-08-03'),
+(4, 6, '12:15', '2025-08-04'),
+(5, 7, '13:45', '2025-08-05'),
+(6, 2, '14:30', '2025-08-06'),
+(7, 3, '15:00', '2025-08-07'),
+(1, 4, '09:15', '2025-09-01'),
+(2, 5, '10:45', '2025-09-02'),
+(3, 6, '11:30', '2025-09-03'),
+(4, 7, '12:45', '2025-09-04'),
+(5, 2, '13:30', '2025-09-05'),
+(6, 3, '14:15', '2025-09-06');
+
+
+SELECT * FROM DoctorsSchema.Appointments;
 
 -- Insert into Rooms
 INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES 
