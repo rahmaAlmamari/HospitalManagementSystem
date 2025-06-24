@@ -322,3 +322,36 @@ INSERT INTO BillingServices (BillingID, ServicesName, ServicesCost) VALUES
 (7, 'Skin Treatment', 80.489);
 
 SELECT * FROM BillingServices;
+
+------------------------------------------ Relational Schema---------------------------------
+
+--SystemSchema
+CREATE SCHEMA SystemSchema;
+
+ALTER SCHEMA SystemSchema TRANSFER Staffs;  
+ALTER SCHEMA SystemSchema TRANSFER Users;
+ALTER SCHEMA SystemSchema TRANSFER Departments;
+
+--DoctorsSchema
+CREATE SCHEMA DoctorsSchema;
+
+ALTER SCHEMA DoctorsSchema TRANSFER Doctors;  
+ALTER SCHEMA DoctorsSchema TRANSFER Appointments;
+ALTER SCHEMA DoctorsSchema TRANSFER MedicalRecords;
+ALTER SCHEMA DoctorsSchema TRANSFER MedicalDiagnoses;
+ALTER SCHEMA DoctorsSchema TRANSFER MedicalTreatments;
+
+--PatientsSchema
+CREATE SCHEMA PatientsSchema;
+
+ALTER SCHEMA PatientsSchema TRANSFER Patients;  
+ALTER SCHEMA PatientsSchema TRANSFER Billing;
+ALTER SCHEMA PatientsSchema TRANSFER BillingServices;
+
+--ReceptionistSchema
+CREATE SCHEMA ReceptionistSchema;
+
+ALTER SCHEMA ReceptionistSchema TRANSFER Receptionist;  
+ALTER SCHEMA ReceptionistSchema TRANSFER Rooms;
+ALTER SCHEMA ReceptionistSchema TRANSFER Admissions;
+
