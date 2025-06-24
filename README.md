@@ -201,7 +201,7 @@ INSERT INTO Staffs (StaffRole) VALUES
 
 SELECT * FROM Staffs;
 ```
-![Staffs Table](./Images/_StaffsTable.PNG)
+![Staffs Table](./Images/_StaffsTable.png)
 
 **. Insert into Users**
 ```sql
@@ -217,7 +217,7 @@ INSERT INTO Users (StaffID, UserName, Password) VALUES
 
 SELECT * FROM Users;
 ```
-![Users Table](./Images/_UsersTable.PNG)
+![Users Table](./Images/_UsersTable.png)
 
 **. Insert into Departments**
 ```sql
@@ -227,7 +227,7 @@ INSERT INTO Departments (DepartmentName) VALUES
 
 SELECT * FROM Departments;
 ```
-![Departments Table](./Images/_DepartmentsTable.PNG)
+![Departments Table](./Images/_DepartmentsTable.png)
 
 **. Insert into Doctors**
 ```sql
@@ -243,7 +243,7 @@ INSERT INTO Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Spe
 
 SELECT * FROM Doctors;
 ```
-![Doctors Table](./Images/_DoctorsTable.PNG)
+![Doctors Table](./Images/_DoctorsTable.png)
 
 **. Insert into Patients**
 ```sql
@@ -259,7 +259,7 @@ INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES
 
 SELECT * FROM Patients;
 ```
-![Patients Table](./Images/_PatientsTable.PNG)
+![Patients Table](./Images/_PatientsTable.png)
 
 **. Insert into Appointments**
 ```sql
@@ -275,7 +275,7 @@ INSERT INTO Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate)
 
 SELECT * FROM Appointments;
 ```
-![Appointments Table](./Images/_AppointmentsTable.PNG)
+![Appointments Table](./Images/_AppointmentsTable.png)
 
 **. Insert into Rooms**
 ```sql
@@ -291,7 +291,7 @@ INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES
 
 SELECT * FROM Rooms;
 ```
-![Rooms Table](./Images/_RoomsTable.PNG)
+![Rooms Table](./Images/_RoomsTable.png)
 
 **. Insert into Receptionist**
 ```sql
@@ -307,7 +307,7 @@ INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES
 
 SELECT * FROM Receptionist;
 ```
-![Receptionist Table](./Images/_ReceptionistTable.PNG)
+![Receptionist Table](./Images/_ReceptionistTable.png)
 
 **. Insert into Admissions**
 ```sql
@@ -323,7 +323,7 @@ INSERT INTO Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) 
 
 SELECT * FROM Admissions;
 ```
-![Admissions Table](./Images/_AdmissionsTable.PNG)
+![Admissions Table](./Images/_AdmissionsTable.png)
 
 **. Insert into MedicalRecords**
 ```sql
@@ -339,7 +339,7 @@ INSERT INTO MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES
 
 SELECT * FROM MedicalRecords;
 ```
-![MedicalRecords Table](./Images/_MedicalRecordsTable.PNG)
+![MedicalRecords Table](./Images/_MedicalRecordsTable.png)
 
 **. Insert into MedicalDiagnoses**
 ```sql
@@ -355,7 +355,7 @@ INSERT INTO MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES
 
 SELECT * FROM MedicalDiagnoses;
 ```
-![MedicalDiagnoses Table](./Images/_MedicalDiagnosesTable.PNG)
+![MedicalDiagnoses Table](./Images/_MedicalDiagnosesTable.png)
 
 **. Insert into MedicalTreatments**
 ```sql
@@ -371,7 +371,7 @@ INSERT INTO MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES
 
 SELECT * FROM MedicalTreatments;
 ```
-![MedicalTreatments Table](./Images/_MedicalTreatmentsTable.PNG)
+![MedicalTreatments Table](./Images/_MedicalTreatmentsTable.png)
 
 **. Insert into Billing**
 ```sql
@@ -387,7 +387,7 @@ INSERT INTO Billing (PatientID, MedicalRecordsID, Date) VALUES
 
 SELECT * FROM Billing;
 ```
-![Billing Table](./Images/_BillingTable.PNG)
+![Billing Table](./Images/_BillingTable.png)
 
 **. Insert into BillingServices**
 ```sql
@@ -403,7 +403,7 @@ INSERT INTO BillingServices (BillingID, ServicesName, ServicesCost) VALUES
 
 SELECT * FROM BillingServices;
 ```
-![BillingServices Table](./Images/_BillingServicesTable.PNG)
+![BillingServices Table](./Images/_BillingServicesTable.png)
 
 
 
