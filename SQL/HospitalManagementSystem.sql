@@ -335,7 +335,7 @@ INSERT INTO ReceptionistSchema.Rooms (RoomNumber, Type, Availability) VALUES
 SELECT * FROM ReceptionistSchema.Rooms;
 
 -- Insert into Receptionist
-INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES 
+INSERT INTO ReceptionistSchema.Receptionist (UserID, StaffID, ReceptionistName) VALUES 
 (2, 2, 'Sarah'),
 (2, 2, 'Anna'),
 (2, 2, 'Zara'),
@@ -344,10 +344,28 @@ INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES
 (2, 2, 'Lana'),
 (2, 2, 'Rina');
 
-SELECT * FROM Receptionist;
+INSERT INTO ReceptionistSchema.Receptionist (UserID, StaffID, ReceptionistName) VALUES 
+(2, 2, 'Laila'),
+(2, 2, 'Amina'),
+(2, 2, 'Khadija'),
+(2, 2, 'Rashid'),
+(2, 2, 'Mohammed'),
+(2, 2, 'Yasmin'),
+(2, 2, 'Hassan'),
+(2, 2, 'Fatima'),
+(2, 2, 'Salim'),
+(2, 2, 'Omar'),
+(2, 2, 'Noura'),
+(2, 2, 'Aliya'),
+(2, 2, 'Zainab'),
+(2, 2, 'Khalid'),
+(2, 2, 'Sara');
+
+
+SELECT * FROM ReceptionistSchema.Receptionist;
 
 -- Insert into Admissions
-INSERT INTO Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) VALUES 
+INSERT INTO ReceptionistSchema.Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) VALUES 
 (1, 101, 1, '2025-06-01', '2025-06-05'),
 (2, 102, 2, '2025-06-02', '2025-06-06'),
 (3, 103, 3, '2025-06-03', '2025-06-07'),
@@ -356,10 +374,28 @@ INSERT INTO Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) 
 (6, 106, 6, '2025-06-06', '2025-06-10'),
 (7, 107, 7, '2025-06-07', '2025-06-11');
 
-SELECT * FROM Admissions;
+INSERT INTO ReceptionistSchema.Admissions (PatientID, RoomNumber, ReceptionistID, DateIn, DateOut) VALUES 
+(1, 108, 8, '2025-07-01', '2025-07-05'),
+(2, 109, 9, '2025-07-02', '2025-07-06'),
+(3, 110, 10, '2025-07-03', '2025-07-07'),
+(4, 111, 11, '2025-07-04', '2025-07-08'),
+(5, 112, 12, '2025-07-05', '2025-07-09'),
+(6, 113, 13, '2025-07-06', '2025-07-10'),
+(7, 114, 14, '2025-07-07', '2025-07-11'),
+(1, 115, 15, '2025-07-08', '2025-07-12'),
+(2, 116, 1, '2025-07-09', '2025-07-13'),
+(3, 117, 2, '2025-07-10', '2025-07-14'),
+(4, 118, 3, '2025-07-11', '2025-07-15'),
+(5, 119, 4, '2025-07-12', '2025-07-16'),
+(6, 120, 5, '2025-07-13', '2025-07-17'),
+(7, 121, 6, '2025-07-14', '2025-07-18'),
+(1, 122, 7, '2025-07-15', '2025-07-19');
+
+
+SELECT * FROM ReceptionistSchema.Admissions;
 
 -- Insert into MedicalRecords
-INSERT INTO MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES 
+INSERT INTO DoctorsSchema.MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES 
 (1, 1, 'Initial checkup', '2025-06-01'),
 (2, 2, 'Headache observed', '2025-06-02'),
 (3, 3, 'Fever noted', '2025-06-03'),
@@ -368,10 +404,27 @@ INSERT INTO MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES
 (6, 6, 'Scan done', '2025-06-06'),
 (7, 7, 'Skin rash treated', '2025-06-07');
 
-SELECT * FROM MedicalRecords;
+INSERT INTO DoctorsSchema.MedicalRecords (PatientID, DoctorID, Notes, Date) VALUES 
+(1, 2, 'Follow-up visit', '2025-07-01'),
+(2, 3, 'Routine checkup', '2025-07-02'),
+(3, 4, 'Post-surgery review', '2025-07-03'),
+(4, 5, 'Pain management consultation', '2025-07-04'),
+(5, 6, 'X-ray analysis', '2025-07-05'),
+(6, 7, 'Dermatology consultation', '2025-07-06'),
+(7, 1, 'Blood pressure review', '2025-07-07'),
+(1, 2, 'Migraine follow-up', '2025-07-08'),
+(2, 3, 'Pediatric fever', '2025-07-09'),
+(3, 4, 'Fracture healing review', '2025-07-10'),
+(4, 5, 'Surgery wound check', '2025-07-11'),
+(5, 6, 'CT scan evaluation', '2025-07-12'),
+(6, 7, 'Skin allergy review', '2025-07-13'),
+(7, 1, 'General health check', '2025-07-14'),
+(1, 2, 'Neurology assessment', '2025-07-15');
+
+SELECT * FROM DoctorsSchema.MedicalRecords;
 
 -- Insert into MedicalDiagnoses
-INSERT INTO MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES 
+INSERT INTO DoctorsSchema.MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES 
 (1, 'Hypertension'),
 (2, 'Migraine'),
 (3, 'Flu'),
@@ -380,10 +433,27 @@ INSERT INTO MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES
 (6, 'Lung infection'),
 (7, 'Eczema');
 
-SELECT * FROM MedicalDiagnoses;
+INSERT INTO DoctorsSchema.MedicalDiagnoses (MedicalRecordsID, Diagnosis) VALUES 
+(8, 'Stable condition'),
+(9, 'Healthy child'),
+(10, 'Post-operative recovery'),
+(11, 'Chronic pain'),
+(12, 'Normal scan'),
+(13, 'Skin irritation'),
+(14, 'Blood pressure controlled'),
+(15, 'Migraine improving'),
+(16, 'Child recovering from flu'),
+(17, 'Bone healing well'),
+(18, 'Surgical site clean'),
+(19, 'Clear CT results'),
+(20, 'Allergy subsiding'),
+(21, 'No major issues'),
+(22, 'Mild neurological symptoms');
+
+SELECT * FROM DoctorsSchema.MedicalDiagnoses;
 
 -- Insert into MedicalTreatments
-INSERT INTO MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES 
+INSERT INTO DoctorsSchema.MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES 
 (1, 'Blood pressure meds'),
 (2, 'Painkillers'),
 (3, 'Rest and fluids'),
@@ -392,10 +462,27 @@ INSERT INTO MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES
 (6, 'Antibiotics'),
 (7, 'Ointments');
 
-SELECT * FROM MedicalTreatments;
+INSERT INTO DoctorsSchema.MedicalTreatments (MedicalRecordsID, TreatmentPlans) VALUES 
+(8, 'Continue medication'),
+(9, 'No treatment needed'),
+(10, 'Physical therapy'),
+(11, 'Pain management plan'),
+(12, 'Observation only'),
+(13, 'Skin ointments prescribed'),
+(14, 'Regular monitoring'),
+(15, 'Painkillers as needed'),
+(16, 'Antibiotics for child'),
+(17, 'Bone strengthening exercises'),
+(18, 'Wound dressing changes'),
+(19, 'Routine follow-up'),
+(20, 'Allergy medication'),
+(21, 'Healthy lifestyle advised'),
+(22, 'Neurology follow-up');
+
+SELECT * FROM DoctorsSchema.MedicalTreatments;
 
 -- Insert into Billing
-INSERT INTO Billing (PatientID, MedicalRecordsID, Date) VALUES 
+INSERT INTO PatientsSchema.Billing (PatientID, MedicalRecordsID, Date) VALUES 
 (1, 1, '2025-06-01'),
 (2, 2, '2025-06-02'),
 (3, 3, '2025-06-03'),
@@ -404,10 +491,27 @@ INSERT INTO Billing (PatientID, MedicalRecordsID, Date) VALUES
 (6, 6, '2025-06-06'),
 (7, 7, '2025-06-07');
 
-SELECT * FROM Billing;
+INSERT INTO PatientsSchema.Billing (PatientID, MedicalRecordsID, Date) VALUES 
+(1, 8, '2025-07-01'),
+(2, 9, '2025-07-02'),
+(3, 10, '2025-07-03'),
+(4, 11, '2025-07-04'),
+(5, 12, '2025-07-05'),
+(6, 13, '2025-07-06'),
+(7, 14, '2025-07-07'),
+(1, 15, '2025-07-08'),
+(2, 16, '2025-07-09'),
+(3, 17, '2025-07-10'),
+(4, 18, '2025-07-11'),
+(5, 19, '2025-07-12'),
+(6, 20, '2025-07-13'),
+(7, 21, '2025-07-14'),
+(1, 22, '2025-07-15');
+
+SELECT * FROM PatientsSchema.Billing;
 
 -- Insert into BillingServices
-INSERT INTO BillingServices (BillingID, ServicesName, ServicesCost) VALUES 
+INSERT INTO PatientsSchema.BillingServices (BillingID, ServicesName, ServicesCost) VALUES 
 (1, 'Checkup', 20.44),
 (2, 'MRI', 120),
 (3, 'Consultation', 50),
@@ -416,7 +520,24 @@ INSERT INTO BillingServices (BillingID, ServicesName, ServicesCost) VALUES
 (6, 'CT Scan', 150),
 (7, 'Skin Treatment', 80.489);
 
-SELECT * FROM BillingServices;
+INSERT INTO PatientsSchema.BillingServices (BillingID, ServicesName, ServicesCost) VALUES 
+(8, 'Follow-up Consultation', 30),
+(9, 'Routine Checkup', 25),
+(10, 'Post-Surgery Visit', 70),
+(11, 'Pain Management', 50),
+(12, 'X-Ray Service', 90),
+(13, 'Skin Consultation', 40),
+(14, 'Blood Pressure Check', 20),
+(15, 'Migraine Treatment', 60),
+(16, 'Pediatric Consultation', 45),
+(17, 'Fracture Review', 80),
+(18, 'Wound Dressing', 35),
+(19, 'CT Scan Evaluation', 150),
+(20, 'Allergy Test', 55),
+(21, 'General Health Check', 50),
+(22, 'Neurology Consultation', 100);
+
+SELECT * FROM PatientsSchema.BillingServices;
 
 ------------------------------------------ Relational Schema---------------------------------
 
