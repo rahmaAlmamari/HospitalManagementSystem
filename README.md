@@ -1296,6 +1296,25 @@ SELECT * FROM vw_DepartmentStats;
 ```
 ![Department Stats View](./Images/_DepartmentStatsView.png)
 
+# SQL Job Requirements
+
+## 1. Daily Backup Job 
+
+- Job Name: Daily_HospitalDB_Backup 
+- Schedule: Every day at 2:00 AM 
+- Action: Database backup 
+
+**Step 1:** Start SQL Server Agent
+
+![Start SQL Server Agent](./Images/DailyBackupJobStep1.png)]
+~~NOTE:~~ right ckick on SQL Server Agent and select "Start" to ensure the agent is running.
+
+**Step 2:** Create a new job
+
+- Right click on SQL Server Agent > New > Jop > the New Jop woindow will open
+
+
+
 
 
 
