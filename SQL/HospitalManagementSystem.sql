@@ -168,13 +168,13 @@ CREATE TABLE BillingServices (
 
 
 -- Insert into Staffs
-INSERT INTO Staffs (StaffRole) VALUES 
+INSERT INTO SystemSchema.Staffs (StaffRole) VALUES 
 ('Doctor'), ('Receptionist'), ('Nurse'), ('Pharmacist'), ('Technician'), ('Surgeon'), ('Admin');
 
-SELECT * FROM Staffs;
+SELECT * FROM SystemSchema.Staffs;
 
 -- Insert into Users
-INSERT INTO Users (StaffID, UserName, Password) VALUES 
+INSERT INTO SystemSchema.Users (StaffID, UserName, Password) VALUES 
 (1, 'docjohn', 'pass123'),
 (2, 'reception1', 'pass234'),
 (3, 'nurse_amy', 'pass345'),
@@ -183,13 +183,24 @@ INSERT INTO Users (StaffID, UserName, Password) VALUES
 (6, 'surge_linda', 'pass678'),
 (7, 'admin_kate', 'pass789');
 
-SELECT * FROM Users;
+-- Add Users
+INSERT INTO SystemSchema.Users (StaffID, UserName, Password) VALUES 
+(1, 'user10', 'pass10'), (2, 'user11', 'pass11'), (3, 'user12', 'pass12'), 
+(4, 'user13', 'pass13'), (5, 'user14', 'pass14'), (6, 'user15', 'pass15'),
+(7, 'user16', 'pass16'), (1, 'user17', 'pass17'), (2, 'user18', 'pass18'),
+(3, 'user19', 'pass19'), (4, 'user20', 'pass20'), (5, 'user21', 'pass21'),
+(6, 'user22', 'pass22'), (7, 'user23', 'pass23'), (1, 'user24', 'pass24'),
+(2, 'user25', 'pass25'), (3, 'user26', 'pass26'), (4, 'user27', 'pass27'),
+(5, 'user28', 'pass28'), (6, 'user29', 'pass29');
+
+
+SELECT * FROM SystemSchema.Users;
 
 -- Insert into Departments
-INSERT INTO Departments (DepartmentName) VALUES 
+INSERT INTO SystemSchema.Departments (DepartmentName) VALUES 
 ('Cardiology'), ('Neurology'), ('Pediatrics'), ('Orthopedics'), ('General Surgery'), ('Radiology'), ('Dermatology');
 
-SELECT * FROM Departments;
+SELECT * FROM SystemSchema.Departments;
 
 -- Insert into Doctors
 INSERT INTO DoctorsSchema.Doctors (UserID, StaffID, DepartmentID, DoctorName, DOB, Gender, Specialization, PhoneNo, Address, Email) VALUES 
@@ -227,7 +238,7 @@ INSERT INTO DoctorsSchema.Doctors (UserID, StaffID, DepartmentID, DoctorName, DO
 SELECT * FROM DoctorsSchema.Doctors;
 
 -- Insert into Patients
-INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES 
+INSERT INTO PatientsSchema.Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES 
 ('James Taylor', '1992-08-15', 'Male', '90909090', '12 Street A', 'james@mail.com'),
 ('Sophie Turner', '1985-03-22', 'Female', '80808080', '34 Street B', 'sophie@mail.com'),
 ('William Scott', '1978-06-10', 'Male', '70707070', '56 Street C', 'william@mail.com'),
@@ -236,7 +247,25 @@ INSERT INTO Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES
 ('Grace Hill', '1995-09-17', 'Female', '40404040', '21 Street F', 'grace@mail.com'),
 ('Daniel Young', '2000-12-20', 'Male', '30303030', '43 Street G', 'daniel@mail.com');
 
-SELECT * FROM Patients;
+-- Insert additional 15 Patients
+INSERT INTO PatientsSchema.Patients (PatientName, DOB, Gender, PhoneNo, Address, Email) VALUES
+('Aisha Ahmed', '1993-03-10', 'Female', '91234501', '10 Green St.', 'aisha@mail.com'),
+('Omar Khalid', '1988-07-22', 'Male', '91234502', '20 Blue St.', 'omar@mail.com'),
+('Fatima Salim', '1990-05-15', 'Female', '91234503', '30 Red St.', 'fatima@mail.com'),
+('Hassan Ali', '1985-09-05', 'Male', '91234504', '40 Yellow St.', 'hassan@mail.com'),
+('Noor Saeed', '1997-12-18', 'Female', '91234505', '50 White St.', 'noor@mail.com'),
+('Salim Nasser', '1991-04-30', 'Male', '91234506', '60 Black St.', 'salim@mail.com'),
+('Layla Mohammed', '1984-11-25', 'Female', '91234507', '70 Silver St.', 'layla@mail.com'),
+('Yusuf Hassan', '1989-01-13', 'Male', '91234508', '80 Golden St.', 'yusuf@mail.com'),
+('Maya Hamad', '1996-02-09', 'Female', '91234509', '90 Purple St.', 'maya@mail.com'),
+('Ali Zayed', '1987-06-21', 'Male', '91234510', '100 Brown St.', 'ali@mail.com'),
+('Rania Fadel', '1994-08-03', 'Female', '91234511', '110 Orange St.', 'rania@mail.com'),
+('Tariq Yousef', '1982-10-17', 'Male', '91234512', '120 Pink St.', 'tariq@mail.com'),
+('Sara Sami', '1995-05-27', 'Female', '91234513', '130 Gray St.', 'sara@mail.com'),
+('Adnan Khalifa', '1980-02-14', 'Male', '91234514', '140 Teal St.', 'adnan@mail.com'),
+('Huda Majid', '1992-09-19', 'Female', '91234515', '150 Cyan St.', 'huda@mail.com');
+
+SELECT * FROM PatientsSchema.Patients;
 
 -- Insert into Appointments
 INSERT INTO DoctorsSchema.Appointments (PatientID, DoctorID, AppointmentTime, AppointmentDate) VALUES 
@@ -275,7 +304,7 @@ INSERT INTO DoctorsSchema.Appointments (PatientID, DoctorID, AppointmentTime, Ap
 SELECT * FROM DoctorsSchema.Appointments;
 
 -- Insert into Rooms
-INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES 
+INSERT INTO ReceptionistSchema.Rooms (RoomNumber, Type, Availability) VALUES 
 (101, 'ICU', 'TRUE'),
 (102, 'General', 'FALSE'),
 (103, 'Pediatrics', 'TRUE'),
@@ -284,7 +313,26 @@ INSERT INTO Rooms (RoomNumber, Type, Availability) VALUES
 (106, 'Radiology', 'TRUE'),
 (107, 'Dermatology', 'TRUE');
 
-SELECT * FROM Rooms;
+-- Insert additional 15 Rooms
+INSERT INTO ReceptionistSchema.Rooms (RoomNumber, Type, Availability) VALUES
+(108, 'ICU', 'TRUE'),
+(109, 'General', 'TRUE'),
+(110, 'Pediatrics', 'FALSE'),
+(111, 'Maternity', 'TRUE'),
+(112, 'Surgery', 'FALSE'),
+(113, 'Radiology', 'TRUE'),
+(114, 'Dermatology', 'TRUE'),
+(115, 'ICU', 'FALSE'),
+(116, 'General', 'TRUE'),
+(117, 'Pediatrics', 'TRUE'),
+(118, 'Maternity', 'FALSE'),
+(119, 'Surgery', 'TRUE'),
+(120, 'Radiology', 'FALSE'),
+(121, 'Dermatology', 'TRUE'),
+(122, 'ICU', 'TRUE');
+
+
+SELECT * FROM ReceptionistSchema.Rooms;
 
 -- Insert into Receptionist
 INSERT INTO Receptionist (UserID, StaffID, ReceptionistName) VALUES 
