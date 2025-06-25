@@ -67,17 +67,18 @@ WHERE PatientID = 1;
 --------------------------------------------------------------------------------------
 
 --3. After update on Rooms → ensure no two patients occupy same room. 
-CREATE TRIGGER trg_AfterUpdate_Rooms
-ON ReceptionistSchema.Rooms
+CREATE TRIGGER trg_AfterUpdateRooms3
+ON ReceptionistSchema.Admissions
 AFTER UPDATE
 --Start of the trigger body
 AS
 BEGIN
     IF EXISTS (
         SELECT RoomNumber
-        FROM Admissions
+        FROM ReceptionistSchema.Rooms
+		WHERE Availability = 'TRUE'
         GROUP BY RoomNumber
-        HAVING COUNT(*) > 1
+        --HAVING COUNT(*) > 1
     )
     BEGIN
         -- If room has more than one patient, block the update
@@ -86,10 +87,22 @@ BEGIN
     END
 END;
 
+--DROP TRIGGER trg_AfterUpdateRooms;
+
+
 --to test TRIGGER trg_AfterUpdate_Rooms
 --1. get all room with the number of Patients assign to it 
 SELECT RoomNumber, COUNT(*) AS PatientCount
 FROM ReceptionistSchema.Admissions
 GROUP BY RoomNumber;
+
+--2. try to update (enter new Patients ... becouse the not change but Patients will) a new Patients in a room which a assigned Patients
+-- Example: Assign patient 3 to Room 101 which already has patient 1.
+UPDATE ReceptionistSchema.Admissions
+SET RoomNumber = 101
+WHERE PatientID = 3;
+
+SELECT * FROM ReceptionistSchema.Rooms;
+SELECT * FROM ReceptionistSchema.Admissions;
 
 
