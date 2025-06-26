@@ -571,3 +571,48 @@ ALTER SCHEMA ReceptionistSchema TRANSFER Receptionist;
 ALTER SCHEMA ReceptionistSchema TRANSFER Rooms;
 ALTER SCHEMA ReceptionistSchema TRANSFER Admissions;
 
+
+-------------------------------------------Doctor Schedule Report TASK---------------------------------
+
+--Create the Report Table
+CREATE TABLE DoctorsSchema.DoctorDailyScheduleLog (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    DoctorID INT, -- I do not set it as FK becouse I do not it to be deleted if the PK is deleted becouse this table is a log history 
+    DoctorName VARCHAR(100),
+    AppointmentDate DATE,
+    AppointmentTime TIME,
+    PatientID INT,
+    PatientName VARCHAR(100),
+    LogDate DATETIME DEFAULT GETDATE()
+);
+
+-- Create the Stored Procedure
+CREATE PROCEDURE DoctorsSchema.sp_InsertDoctorDailySchedule
+AS
+BEGIN
+    SET NOCOUNT ON;--to improve the preformance of the system (Prevents Unnecessary Messages) 
+
+    DECLARE @Today DATE = CAST(GETDATE() AS DATE);
+
+    INSERT INTO DoctorsSchema.DoctorDailyScheduleLog (DoctorID, DoctorName, AppointmentDate, AppointmentTime, PatientID, PatientName)
+    SELECT 
+        A.DoctorID,
+        D.DoctorName,
+        A.AppointmentDate,
+        A.AppointmentTime,
+        A.PatientID,
+        P.PatientName
+    FROM DoctorsSchema.Appointments A
+    INNER JOIN DoctorsSchema.Doctors D ON A.DoctorID = D.DoctorID
+    INNER JOIN PatientsSchema.Patients P ON A.PatientID = P.PatientID
+    WHERE A.AppointmentDate = @Today;
+END;
+
+--I do not use VALUE keyword when I insert data to DoctorsSchema.DoctorDailyScheduleLog becouse in sql server there are two way to insert
+-- 1. INSERT INTO TableName (Column1, Column2) VALUES (Value1, Value2);
+
+--2. INSERT INTO TableName (Column1, Column2) SELECT Column1, Column2 FROM TableName;
+
+
+SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
+

@@ -1368,7 +1368,71 @@ SELECT * FROM vw_DepartmentStats;
 ![Daily Backup Job ](./Images/DailyBackupJobStep9.png)
 - You can right-click the job and select Start Job at Step… to manually test it.
 ![Daily Backup Job ](./Images/DailyBackupJobStep10.png)
-- ![Daily Backup Job ](./Images/DailyBackupJobStep11.png)
+![Daily Backup Job ](./Images/DailyBackupJobStep11.png)
+
+## 2. Doctor Schedule Report 
+
+- Job Name: Doctor_Daily_Schedule_Report 
+- Schedule: Every morning at 7:00 AM 
+- Action: 
+  - A stored procedure that extracts the daily doctor schedule from Appointments and inserts it into a 
+    report table DoctorDailyScheduleLog. 
+
+**Step 1: Create the Report Table**
+
+```sql
+CREATE TABLE DoctorsSchema.DoctorDailyScheduleLog (
+    LogID INT IDENTITY(1,1) PRIMARY KEY,
+    DoctorID INT,
+    DoctorName VARCHAR(100),
+    AppointmentDate DATE,
+    AppointmentTime TIME,
+    PatientID INT,
+    PatientName VARCHAR(100),
+    LogDate DATETIME DEFAULT GETDATE()
+);
+```
+**Step 2: Create the Stored Procedure**
+
+```sql
+CREATE PROCEDURE DoctorsSchema.sp_InsertDoctorDailySchedule
+AS
+BEGIN
+    SET NOCOUNT ON;--to improve the preformance of the system (Prevents Unnecessary Messages) 
+
+    DECLARE @Today DATE = CAST(GETDATE() AS DATE);
+
+    INSERT INTO DoctorsSchema.DoctorDailyScheduleLog (DoctorID, DoctorName, AppointmentDate, AppointmentTime, PatientID, PatientName)
+    SELECT 
+        A.DoctorID,
+        D.DoctorName,
+        A.AppointmentDate,
+        A.AppointmentTime,
+        A.PatientID,
+        P.PatientName
+    FROM DoctorsSchema.Appointments A
+    INNER JOIN DoctorsSchema.Doctors D ON A.DoctorID = D.DoctorID
+    INNER JOIN PatientsSchema.Patients P ON A.PatientID = P.PatientID
+    WHERE A.AppointmentDate = @Today;
+END;
+
+--I do not use VALUE keyword when I insert data to DoctorsSchema.DoctorDailyScheduleLog becouse in sql server there are two way to insert
+-- 1. INSERT INTO TableName (Column1, Column2) VALUES (Value1, Value2);
+
+--2. INSERT INTO TableName (Column1, Column2) SELECT Column1, Column2 FROM TableName;
+
+SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
+```
+
+**Step 3: Create the SQL Server Agent Job to Handle the Stored Procedure**
+
+![Doctor Schedule Report](./Images/DoctorScheduleReport1.png)
+![Doctor Schedule Report](./Images/DoctorScheduleReport2.png)
+![Doctor Schedule Report](./Images/DoctorScheduleReport3.png)
+![Doctor Schedule Report](./Images/DoctorScheduleReport4.png)
+![Doctor Schedule Report](./Images/DoctorScheduleReport5.png)
+
+
 
 
 
