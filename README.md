@@ -1306,12 +1306,72 @@ SELECT * FROM vw_DepartmentStats;
 
 **Step 1:** Start SQL Server Agent
 
-![Start SQL Server Agent](./Images/DailyBackupJobStep1.png)]
+![Daily Backup Job ](./Images/DailyBackupJobStep1.png)
 ~~NOTE:~~ right ckick on SQL Server Agent and select "Start" to ensure the agent is running.
 
 **Step 2:** Create a new job
 
 - Right click on SQL Server Agent > New > Jop > the New Jop woindow will open
+![Daily Backup Job ](./Images/DailyBackupJobStep2.png)
+
+- In the General Page:
+  - Name: Daily_HospitalDB_Backup
+  - Description (Optional): Daily backup for the HospitalManagementSystem database.
+![Daily Backup Job ](./Images/DailyBackupJobStep3.png)
+
+**Step 3: Add a Backup Step**
+
+- Click on Steps on the left > Click New…
+![Daily Backup Job ](./Images/DailyBackupJobStep4.png)
+
+- In the New Job Step:
+  - Step Name: Backup_HospitalDB
+  - Type: Transact-SQL script (T-SQL)
+  - Database: master
+  
+  ~~NOTE:~~ we use master not our db becouse we need to control this out side the db
+
+  - Command:
+  ```sql 
+  BACKUP DATABASE HospitalManagementSystem
+  TO DISK = 'C:\Backup\HospitalManagementSystem_Daily.bak'
+  WITH INIT, FORMAT, STATS = 10;
+  ```
+  ~~NOTE:~~
+  (Make sure the C:\Backup folder exists, or you can change the path to your desired backup location.)
+
+  - Click OK to save the step.
+  ![Daily Backup Job ](./Images/DailyBackupJobStep5.png)
+  
+**Step 4: Set the Schedule**
+
+- Click on Schedules > Click New…
+![Daily Backup Job ](./Images/DailyBackupJobStep6.png)
+
+- In the New Job Schedule:
+  - Name: Daily_2AM
+  - Schedule Type: Recurring
+  - Frequency: Daily
+  - Recurs every: 1 day
+  - Daily Frequency: Occurs once at 2:00:00 AM
+  - Click OK to save the schedule.
+  ![Daily Backup Job ](./Images/DailyBackupJobStep7.png)
+  
+**Step 5: Finalize**
+
+- Click OK to create the job.
+![Daily Backup Job ](./Images/DailyBackupJobStep8.png)
+
+**Step 6: Verify**
+
+- In SQL Server Agent → Jobs, you will now see Daily_HospitalDB_Backup.
+![Daily Backup Job ](./Images/DailyBackupJobStep9.png)
+- You can right-click the job and select Start Job at Step… to manually test it.
+![Daily Backup Job ](./Images/DailyBackupJobStep10.png)
+- ![Daily Backup Job ](./Images/DailyBackupJobStep11.png)
+
+
+
 
 
 
