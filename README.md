@@ -1558,6 +1558,9 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
      
      - Click OK.
 
+5. Enable Notifications 
+
+   
     
    
 
