@@ -1432,7 +1432,7 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
 ![Doctor Schedule Report](./Images/DoctorScheduleReport4.png)
 ![Doctor Schedule Report](./Images/DoctorScheduleReport5.png)
 
-
+# Bonus Challenge (Optional) 
 
 
 
