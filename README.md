@@ -1497,7 +1497,16 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
      
 **Step 2: Configure the SQL Job to Send Email Alerts**
 
+1. Open SQL Server Agent
 
+   - In SQL Server Management Studio (SSMS):
+     - Go to Object Explorer
+     - Expand SQL Server Agent
+     - Right-click on Jobs → Choose New Job...
+   ![Bonus Challenge](./Images/BonusChallenge15.png)
+   
+    
+   
 
 
 
