@@ -1544,6 +1544,7 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
        ```
        ![Bonus Challenge](./Images/BonusChallenge17.png)
 
+4. Set a Schedule
     
    
 
