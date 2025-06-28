@@ -1512,6 +1512,37 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
      - Description: (Optional) "Sends email if any doctor has over 10 appointments in one day"
     ![Bonus Challenge](./Images/BonusChallenge16.png)
 
+3. Add a Job Step
+
+   - Go to the Steps page → Click New...
+     - Fill in like this:
+       - Step name: Check Appointments
+       - Type: Transact-SQL script (T-SQL)
+       - Database: HospitalManagementSystem
+       - Command:
+       ```sql
+       IF EXISTS (
+       SELECT DoctorID, AppointmentDate
+       FROM DoctorsSchema.Appointments
+       GROUP BY DoctorID, AppointmentDate
+       HAVING COUNT(*) > 10
+       )
+       BEGIN
+       EXEC msdb.dbo.sp_send_dbmail --Built-in stored procedure that sends emails from SQL Server.
+        @profile_name = 'HospitalAlertProfile',  -- replace with your profile name
+        @recipients = 'rahma.almamari2021@gmail.com',
+        @subject = 'x( Doctor Alert: Overloaded Schedule',
+        @body = 'One or more doctors have more than 10 appointments scheduled today. Please check the schedule.';
+       END
+       ````
+
+       ~~NOTE:~~ 
+       Run this SQL query in SSMS to list all existing mail profiles
+       ```sql 
+       SELECT name 
+       FROM msdb.dbo.sysmail_profile;
+       ```
+       ![Bonus Challenge](./Images/BonusChallenge17.png)
 
     
    
