@@ -1504,7 +1504,15 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
      - Expand SQL Server Agent
      - Right-click on Jobs → Choose New Job...
    ![Bonus Challenge](./Images/BonusChallenge15.png)
-   
+
+2. Set Job Name
+
+   - In the General tab:
+     - Name: Doctor Appointment Alert
+     - Description: (Optional) "Sends email if any doctor has over 10 appointments in one day"
+    ![Bonus Challenge](./Images/BonusChallenge16.png)
+
+
     
    
 
