@@ -1560,6 +1560,20 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
 
 5. Enable Notifications 
 
+   - Go to Notifications tab
+   - Choose: When the job succeeds → E-mail
+   ![Bonus Challenge](./Images/BonusChallenge19.png)
+   
+   - Use your working mail profile and email
+   ![Bonus Challenge](./Images/BonusChallenge20.png)
+   ![Bonus Challenge](./Images/BonusChallenge21.png)
+   - Click Next → then Finish.
+   ![Bonus Challenge](./Images/BonusChallenge22.png)
+   - Restart SQL Server Agent
+     - Right-click on SQL Server Agent > Restart
+   - It should work now.
+  ![Bonus Challenge](./Images/BonusChallenge23.png) 
+
    
     
    
