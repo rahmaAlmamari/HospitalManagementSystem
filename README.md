@@ -1580,10 +1580,19 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
    - Check your email for the alert.
    ![Bonus Challenge](./Images/BonusChallengeTest.png)
 
-   
-    
-   
+~~NOTE:~~
 
+To be able to push my jop to my github I need to generate Job as SQL Script from SSMS:
+
+- Open SSMS and connect to your SQL Server instance.
+- In Object Explorer, expand: SQL Server Agent → Jobs
+- Right-click on your job → choose: Script Job as → CREATE To → New Query Editor Window
+![Bonus Challenge](./Images/Generate_Job_As_SQL_Script.png)
+- SSMS will generate a complete .sql script for that job.
+- Review it. You can optionally save it: 
+  - Click File → Save As
+  - Name it something like Create_AppointmentAlertJob.sql
+![Bonus Challenge](./Images/Generate_Job_As_SQL_Script2.png)
 
 
 
