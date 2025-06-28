@@ -1434,6 +1434,78 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
 
 # Bonus Challenge (Optional) 
 
+- Set up a SQL job that: 
+  - Sends an email alert if any doctor has more than 10 appointments per day. 
+  - Exports the billing summary into a .CSV file weekly using BCP or PowerShell. 
+  
+**Step 1: Enable Database Mail and Configure Email**
+
+1. In SSMS, go to Management > Database Mail.
+![Bonus Challenge](./Images/BonusChallenge1.png)
+
+2. Right-click and choose Configure Database Mail.
+![Bonus Challenge](./Images/BonusChallenge2.png)
+
+3. Follow the wizard to set up an SMTP account (e.g., Gmail or internal SMTP).
+![Bonus Challenge](./Images/BonusChallenge3.png)
+
+   - Choose “Set up Database Mail by performing the following tasks” > Click Next.
+   ![Bonus Challenge](./Images/BonusChallenge4.png)
+   
+   - Create a New Profile:
+     - Profile Name: Give it a name like HospitalAlertProfile.
+     - Description: Optional (e.g., "Used for hospital system alerts").
+     - Click Add to add an SMTP account.
+   ![Bonus Challenge](./Images/BonusChallenge5.png)
+
+   - Configure SMTP Account:
+     - Account Name: You can write (HospitalSMTPAccount)
+     - Description:	Optional (you can leve it blank)
+     - Email address: Write address email that will send the email for the user (yourgmail@gmail.com)
+     - Display name: You name or company name that send the email (Hospital Alert System)
+     - Reply email: 'rahma.almamari2021@gmail.com'
+     - Server Name:	smtp.gmail.com
+     - Port number:	587
+     - Check **This server requires a secure connection (SSL)**
+     - Chech **Authentication - Basic**
+     - User name: Your full Gmail address > 'alr816124@gmail.com'
+     ![Bonus Challenge](./Images/BonusChallenge6.png)
+     - Password: Your Gmail app password (not your login password) > **HOW TO GET APP PASSWORD?**
+       - Step 1: Enable 2-Step Verification
+         - Go to Google Account Security
+         - Under "Signing in to Google", enable 2-Step Verification
+         ![Bonus Challenge](./Images/BonusChallenge7.png)
+         
+         ~~ÑOTE:~~ You'll need to verify with your phone or authenticator.
+       
+         ![Bonus Challenge](./Images/BonusChallenge8.png)
+       
+     - Step 2: Generate an App Password
+       - After enabling 2FA, go to: https://myaccount.google.com/apppasswords
+       ![Bonus Challenge](./Images/BonusChallenge9.png)
+       - In the "App name" box, type something descriptive — for example: SQL Server or Hospital SMTP
+       ![Bonus Challenge](./Images/BonusChallenge10.png)
+       - A yellow popup box will appear with a 16-character password, like:abcd efgh ijkl mnop
+       ![Bonus Challenge](./Images/BonusChallenge11.png)
+       - Copy that password (without spaces!).
+       ![Bonus Challenge](./Images/BonusChallenge12.png)
+       - So my app password: 'xsiicdnfozpkdasq'
+       ![Bonus Challenge](./Images/BonusChallenge13.png)
+       
+     - Just click Next until you reach Finish, and then click Finish > close.
+     ![Bonus Challenge](./Images/BonusChallenge14.png)
+     
+     
+     
+       
+         
+         
+
+4. Test the email by sending a test mail.
+
+
+
+
 
 
 
