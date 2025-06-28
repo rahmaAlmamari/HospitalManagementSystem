@@ -1574,6 +1574,12 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
    - It should work now.
   ![Bonus Challenge](./Images/BonusChallenge23.png) 
 
+
+6. Test the Job
+   - Right-click on the job → Start Job at Step...
+   - Check your email for the alert.
+   ![Bonus Challenge](./Images/BonusChallengeTest.png)
+
    
     
    
