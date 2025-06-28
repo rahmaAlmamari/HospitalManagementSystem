@@ -1544,7 +1544,20 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
        ```
        ![Bonus Challenge](./Images/BonusChallenge17.png)
 
+       - Click OK.
+
+
+
 4. Set a Schedule
+
+   - Go to the Schedules tab → Click New...
+     - Name: DailyCheck
+     - Frequency: Daily
+     - Time: choose a time like 10:00 AM
+     ![Bonus Challenge](./Images/BonusChallenge18.png)
+     
+     - Click OK.
+
     
    
 
