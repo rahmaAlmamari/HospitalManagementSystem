@@ -1495,13 +1495,7 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
      - Just click Next until you reach Finish, and then click Finish > close.
      ![Bonus Challenge](./Images/BonusChallenge14.png)
      
-     
-     
-       
-         
-         
-
-4. Test the email by sending a test mail.
+**Step 2: Configure the SQL Job to Send Email Alerts**
 
 
 

@@ -616,7 +616,5 @@ END;
 
 SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
 
-------------------------------------------------------Bonus Challenge (Optional) ---------------------------
-
 
 
