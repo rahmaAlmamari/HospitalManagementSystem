@@ -1435,8 +1435,7 @@ SELECT * FROM DoctorsSchema.DoctorDailyScheduleLog;
 # Bonus Challenge (Optional) 
 
 - Set up a SQL job that: 
-  - Sends an email alert if any doctor has more than 10 appointments per day. 
-  - Exports the billing summary into a .CSV file weekly using BCP or PowerShell. 
+  - Sends an email alert if any doctor has more than 10 appointments per day.
   
 **Step 1: Enable Database Mail and Configure Email**
 
@@ -1595,6 +1594,7 @@ To be able to push my jop to my github I need to generate Job as SQL Script from
 ![Bonus Challenge](./Images/Generate_Job_As_SQL_Script2.png)
 
 
+- Exports the billing summary into a .CSV file weekly using BCP or PowerShell. 
 
 
 
