@@ -1619,6 +1619,23 @@ JOIN
 SELECT * FROM BillingSummary;
 ```
 
+**Step 2: Use BCP to Export the View as .CSV**
+
+- Open Command Prompt (type cmd in Start menu and hit Enter).
+- Run the following:
+```cmd
+bcp "SELECT * FROM HospitalManagementSystem.dbo.BillingSummary" queryout "C:\Backup\BillingSummary.csv" -c -t, -T -S localhost
+```
+![Bonus Challenge2](./Images/CSV1.png)
+![Bonus Challenge2](./Images/CSV2.png)
+
+- Explanation:
+  - **queryout** > tells BCP to output query results.
+  - **c** > output as character data.
+  - **t,** > use comma as delimiter.
+  - **T** > use trusted connection (Windows Auth).
+  - **S localhost** > change to your actual SQL Server instance name if needed.
+
 
 
 
