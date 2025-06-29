@@ -1596,7 +1596,28 @@ To be able to push my jop to my github I need to generate Job as SQL Script from
 
 - Exports the billing summary into a .CSV file weekly using BCP or PowerShell. 
 
+**Step 1: Create a View (Billing Summary)**
 
+- Create view that will holds the billing summary data
+```sql
+CREATE VIEW BillingSummary AS
+SELECT 
+    B.BillingID,
+    P.PatientName,
+    B.Date AS BillingDate,
+    S.ServicesName,
+    S.ServicesCost
+FROM 
+    Billing B
+JOIN 
+    BillingServices S ON B.BillingID = S.BillingID
+JOIN 
+    Patients P ON B.PatientID = P.PatientID;
+```
+-- To call the view
+```sql
+SELECT * FROM BillingSummary;
+```
 
 
 
