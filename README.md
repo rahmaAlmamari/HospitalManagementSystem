@@ -1636,6 +1636,28 @@ bcp "SELECT * FROM HospitalManagementSystem.dbo.BillingSummary" queryout "C:\Bac
   - **T** > use trusted connection (Windows Auth).
   - **S localhost** > change to your actual SQL Server instance name if needed.
 
+**Step 3: Create SQL Server Agent Job**
+
+- Go to SQL Server Agent → Jobs → New Job…
+- Name: Export Weekly Billing Summary
+- Add a Step:
+  - Type: Operating system (CmdExec)
+  - Command: Use the bcp command shown above
+- Add a Schedule:
+  - Name: WeeklyExport
+  - Frequency: Weekly
+  - Recurs every: 1 week
+  - Choose a day (e.g., Sunday at 2:00 AM)
+  
+![Bonus Challenge2](./Images/CSV3.png)
+![Bonus Challenge2](./Images/CSV4.png)
+![Bonus Challenge2](./Images/CSV5.png)
+![Bonus Challenge2](./Images/CSV6.png)
+
+
+
+
+
 
 
 

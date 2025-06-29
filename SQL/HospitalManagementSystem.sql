@@ -636,4 +636,6 @@ JOIN
 --To call the view
 SELECT * FROM BillingSummary;
 
---Use BCP to Export the View as .CSV
+
+
+
